@@ -1,12 +1,11 @@
-# Nombre final del curso
-
-Este es el repositorio del curso de LinkedIn Learning `[nombre del curso]`. El curso completo está disponible en [LinkedIn Learning][lil-course-url].
+# C# avanzado 2
+Este es el repositorio del curso de LinkedIn Learning `[C# avanzado 2]`. El curso completo está disponible en [LinkedIn Learning][lil-course-url].
 
 ![Nombre completo del curso][lil-thumbnail-url] 
 
 Consulta el archivo Readme en la rama main para obtener instrucciones e información actualizadas.
 
-DESCRIPCIÓN DEL CURSO
+Durante este contenido formativo aprenderás las características más avanzadas de C#, pero al mismo tiempo las más útiles y comúnmente utilizadas en escenarios reales y complejos, demandadas en el mercado actual. Amplía y expande tus conocimientos con C· dominando conceptos como las consultas LINQ, computación asíncrona, expresiones regulares y manejo de excepciones, entre otros.
 
 ## Instrucciones
 
@@ -26,9 +25,9 @@ Las ramas están estructuradas para corresponder a los vídeos del curso. La con
 
 ### Docente
 
-**Nombre del docente**
+**Noemí León**
 
-Echa un vistazo a mis otros cursos en [LinkedIn Learning](https://www.linkedin.com/learning/instructors/).
+Echa un vistazo a mis otros cursos en [LinkedIn Learning](https://www.linkedin.com/learning/instructors/noemi-leon).
 
 [0]: # (Replace these placeholder URLs with actual course URLs)
 [lil-course-url]: https://www.linkedin.com/learning/building-a-graphql-project-with-react-js
