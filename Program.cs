@@ -7,20 +7,26 @@ namespace Avanzado2_3
     {
         static void Main()
         {
-            Thread t = new Thread(ImprimeConteo);
-            t.Name = "CONTEO";
-            t.Start();
-            //var termino = t.Join(1000);
-
-            Console.WriteLine("fin hilo principal");
+            new Thread(ImprimeConteo).Start();
         }
         static void ImprimeConteo()
         {
-            Console.WriteLine(Thread.CurrentThread.Name);
-            Thread.Sleep(1000);
-            for(int i=100; i>=0; --i)
-                Console.Write(i);
-            
+            try
+            {
+                Console.WriteLine(Thread.CurrentThread.Name);
+                Thread.Sleep(1000);
+                for (int i = 100; i >= 0; --i)
+                    Console.Write(i);
+            }catch(Exception e)
+            {
+                Console.WriteLine(e);
+            }
         }
+        static void ImprimeConteo(int inicio)
+        {
+            for (int i = inicio; i >= 0; --i)
+                Console.Write(i);
+        }
+
     }
 }
