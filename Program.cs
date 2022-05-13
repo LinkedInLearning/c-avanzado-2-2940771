@@ -9,23 +9,26 @@ namespace Avanzado2_1
         static void Main()
         {
             var paisesUE = new List<string>() { "España", "Austria", "Italia", "Alemania", "Dinamarca", "Suecia", "Finlandia" };
-            var paisesUEL = new List<string>();
-            foreach(var p in paisesUE)
-            {
-                if (p.Length > 6)
-                    paisesUEL.Add(p);
-            }
+            var paisesLargos = paisesUE.Where(p => p.Length > 6).OrderBy(p => p);
+            Imprimir("paises en orden", paisesLargos);
 
-            var paisesUELLinq = paisesUE.Where(p => p.Length > 6);
-            Console.WriteLine("sintaxis métodos");
-            paisesUELLinq.ToList().ForEach(p => Console.WriteLine(p));
+            var paisMasLargo = paisesUE.Where(p => p.Length > 6).OrderByDescending(p => p.Length).First();
+            Console.WriteLine("pais mas largo");
+            Console.WriteLine(paisMasLargo);
 
-            var paisesUELinqB =
+            var paisesLargosB =
                 from p in paisesUE
                 where p.Length > 6
+                orderby p
                 select p;
-            Console.WriteLine("sintaxis consultas");
-            paisesUELinqB.ToList().ForEach(p => Console.WriteLine(p));
+            Imprimir("paises en orden - consulta", paisesLargosB);
+
+
+        }
+        static void Imprimir(string titulo, IEnumerable<string> ie)
+        {
+            Console.WriteLine(titulo);
+            ie.ToList().ForEach(p => Console.WriteLine(p));
         }
     }
 }
