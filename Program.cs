@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel;
+using System.Reflection;
 
 namespace Avanzado2_2
 {
@@ -9,11 +10,12 @@ namespace Avanzado2_2
         {
             var s = Suma(5, 5);
         }
-
-        [Obsolete("Metodo obsoleto. Usar metodo Add en su lugar", false)]
-        [Description("Suma los valores de los argumentos")]
+        [DatosDesarrollo("3A")]
         static int Suma(int A, int B)
         {
+            MethodBase metodo = MethodBase.GetCurrentMethod();
+            DatosDesarrolloAttribute attr = (DatosDesarrolloAttribute)metodo.
+                GetCustomAttributes(typeof(DatosDesarrolloAttribute), true)[0];
             return A + B;
         }
     }
