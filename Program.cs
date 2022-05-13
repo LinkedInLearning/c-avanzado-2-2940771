@@ -1,22 +1,26 @@
 ﻿using System;
-using System.ComponentModel;
-using System.Reflection;
+using System.Threading;
 
-namespace Avanzado2_2
+namespace Avanzado2_3
 {
     class Program
     {
         static void Main()
         {
-            var s = Suma(5, 5);
+            Thread t = new Thread(ImprimeConteo);
+            t.Name = "CONTEO";
+            t.Start();
+
+            for(int i = 100; i >= 0; --i)
+                Console.Write('X');
         }
-        [DatosDesarrollo("3A")]
-        static int Suma(int A, int B)
+        static void ImprimeConteo()
         {
-            MethodBase metodo = MethodBase.GetCurrentMethod();
-            DatosDesarrolloAttribute attr = (DatosDesarrolloAttribute)metodo.
-                GetCustomAttributes(typeof(DatosDesarrolloAttribute), true)[0];
-            return A + B;
+            Console.WriteLine(Thread.CurrentThread.Name);
+            for(int i=100; i>=0; --i)
+            {
+                Console.Write(i);
+            }
         }
     }
 }
