@@ -52,16 +52,18 @@ namespace Avanzado2_1
                 },
             };
 
-            var cursosFiltro = cursos.Where(c => c.Duracion <= 18000 && c.Titulo.Contains("C#"))
-                .OrderBy(c => c.Nivel)
+            var cursoCorto = cursos.OrderByDescending(c => c.Duracion).FirstOrDefault();
+            Console.WriteLine("curso mas corto {0}, dura {1} ms ", cursoCorto.Titulo, cursoCorto.Duracion);
+
+            var cursosGruposNivel = cursos.Where(c => c.Id.Contains("ES"))
                 .Select(c => new
                 {
-                    titulo = c.Titulo,
-                    nivel = c.Nivel,
-                    tiempo = c.Duracion
-                });
+                    c.Id,
+                    c.Titulo,
+                    grupoNivel = c.Nivel
+                }).GroupBy(c => c.grupoNivel);
 
-            cursosFiltro.ToList().ForEach(c => Console.WriteLine("titulo {0}\n nivel {1}\n tiempo {2}\n", c.titulo, c.nivel, c.tiempo));
+           
         }
       
     }
