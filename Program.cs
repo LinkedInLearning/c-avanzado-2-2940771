@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Threading;
+using System.Threading.Tasks;
 
 namespace Avanzado2_3
 {
@@ -7,17 +8,10 @@ namespace Avanzado2_3
     {
         static void Main()
         {
-            var e = new ManualResetEvent(false); //AutoResetEvent
-            new Thread(() =>
+            var tr = Task.Run(() =>
             {
-                Console.WriteLine("esperando..");
-                e.WaitOne();
-                e.Dispose();
-                Console.WriteLine("signal recibida..");
-            }).Start();
-            Thread.Sleep(2000);
-            e.Set();
-            e.Reset();
+               
+            });
         }
     }
 }
