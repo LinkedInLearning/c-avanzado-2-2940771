@@ -3,7 +3,7 @@
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFramework>netcoreapp3.1</TargetFramework>
-    <RootNamespace>Avanzado2_1</RootNamespace>
+    <RootNamespace>Avanzado2_2</RootNamespace>
   </PropertyGroup>
 
 </Project>
