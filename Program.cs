@@ -7,27 +7,17 @@ namespace Avanzado2_3
     {
         static void Main()
         {
-            Thread tx = new Thread(ImprimeConteoX);
-            tx.Priority = ThreadPriority.Highest;
-
-            Thread to = new Thread(ImprimeConteoO);
-            to.Priority = ThreadPriority.Lowest;
-
-            tx.Start();
-            to.Start();
+            var e = new ManualResetEvent(false); //AutoResetEvent
+            new Thread(() =>
+            {
+                Console.WriteLine("esperando..");
+                e.WaitOne();
+                e.Dispose();
+                Console.WriteLine("signal recibida..");
+            }).Start();
+            Thread.Sleep(2000);
+            e.Set();
+            e.Reset();
         }
-        static void ImprimeConteoX()
-        {
-            for (int i = 1000; i >= 0; --i)
-                Console.Write("X");
-            Console.WriteLine("\nFIN CONTEO X\n");
-        }
-        static void ImprimeConteoO()
-        {
-            for (int i = 1000; i >= 0; --i)
-                Console.Write("O");
-            Console.WriteLine("\nFIN CONTEO O\n");
-        }
-
     }
 }
