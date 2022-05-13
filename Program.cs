@@ -4,6 +4,14 @@ using System.Linq;
 
 namespace Avanzado2_1
 {
+    public enum Area
+    {
+        Programacion,
+        CSharp,
+        JavaScript,
+        InteligenciaNegocios,
+        CienciaDatos
+    }
     class Program
     {
         static void Main()
@@ -17,6 +25,7 @@ namespace Avanzado2_1
                     Descripcion = "Aprende lo básico e indispensable de C#",
                     Duracion = 5400,
                     Nivel = 1,
+                    Area = Area.CSharp
                 },
                 new Curso
                 {
@@ -25,6 +34,7 @@ namespace Avanzado2_1
                     Descripcion = "Sube tu nivel con C# avanzado 1",
                     Duracion = 10800,
                     Nivel = 2,
+                    Area = Area.CSharp
                 },
                 new Curso
                 {
@@ -33,6 +43,7 @@ namespace Avanzado2_1
                     Descripcion = "Aprende LINQ de cero a experto",
                     Duracion = 18000,
                     Nivel = 2,
+                    Area = Area.CSharp
                 },
                 new Curso
                 {
@@ -41,6 +52,7 @@ namespace Avanzado2_1
                     Descripcion = "Aprende sobre algoritmos, estructuras de datos y lenguajes de programación",
                     Duracion = 21600,
                     Nivel = 1,
+                    Area = Area.Programacion
                 },
                 new Curso
                 {
@@ -49,22 +61,43 @@ namespace Avanzado2_1
                     Descripcion = "Learn the basics of  Data Science",
                     Duracion = 21600,
                     Nivel = 1,
+                    Area = Area.CienciaDatos
+                },
+            };
+            var instructores = new List<Instructor>()
+            {
+                new Instructor()
+                {
+                    Nombre = "Noemi Leon",
+                    Bio = "Lider de proyectos desarrollo de software",
+                    Area = Area.CSharp
+                },
+                new Instructor()
+                {
+                    Nombre = "Danielle Simpson",
+                    Bio = "Lead Manager",
+                    Area = Area.CienciaDatos
+                },
+                new Instructor()
+                {
+                    Nombre = "Cristina Santos",
+                    Bio = "Profesora de Tiempo Completo en Universidad",
+                    Area = Area.InteligenciaNegocios
                 },
             };
 
-            var cursoCorto = cursos.OrderByDescending(c => c.Duracion).FirstOrDefault();
-            Console.WriteLine("curso mas corto {0}, dura {1} ms ", cursoCorto.Titulo, cursoCorto.Duracion);
-
-            var cursosGruposNivel = cursos.Where(c => c.Id.Contains("ES"))
-                .Select(c => new
-                {
-                    c.Id,
-                    c.Titulo,
-                    grupoNivel = c.Nivel
-                }).GroupBy(c => c.grupoNivel);
-
-           
+            var cursosPorInstructor = cursos.Where(c => c.Id.Contains("prog"))
+                .Join(instructores,
+                    c => c.Area,
+                    i => i.Area,
+                    (c, i) => new
+                    {
+                        c.Id,
+                        c.Titulo,
+                        c.Nivel,
+                        instructor = i.Nombre
+                    }
+                ).GroupBy(ci => ci.instructor);
         }
-      
     }
 }

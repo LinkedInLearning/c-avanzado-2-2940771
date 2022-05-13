@@ -11,6 +11,9 @@ namespace Avanzado2_1
         public string Descripcion { get; set; }
         internal double Duracion { get; set; }
         public byte Nivel { get; set; }
+
+        public Area Area { get; set; }
+        public Instructor InstructorAsignado { get; set; }
         
     }
 }
