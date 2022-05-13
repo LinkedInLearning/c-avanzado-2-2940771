@@ -17,6 +17,15 @@ namespace Avanzado2_1
             }
 
             var paisesUELLinq = paisesUE.Where(p => p.Length > 6);
+            Console.WriteLine("sintaxis métodos");
+            paisesUELLinq.ToList().ForEach(p => Console.WriteLine(p));
+
+            var paisesUELinqB =
+                from p in paisesUE
+                where p.Length > 6
+                select p;
+            Console.WriteLine("sintaxis consultas");
+            paisesUELinqB.ToList().ForEach(p => Console.WriteLine(p));
         }
     }
 }
