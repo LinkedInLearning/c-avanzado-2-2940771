@@ -4,28 +4,24 @@ namespace Avanzado2_2
 {
     class Program
     {
-        public class Peticion
+        private enum Moneda
         {
-            internal int Puerto { get; set; }
-            internal string Metodo { get; set; }
-            internal string TipoDeContenido { get; set; }
+            MXN,
+            EUR,
+            USD
         }
         static void Main()
         {
-            object miNombre = "Noemi";
+            decimal ConvertirMoneda(decimal cantidad, Moneda inicial, Moneda final) =>
+                 (inicial, final) switch
+                 {
+                     (Moneda.EUR, Moneda.MXN) => (cantidad * 21.27m),
+                     (Moneda.MXN, Moneda.EUR) => (cantidad * 0.047m),
+                     _ => throw new Exception("Combinacion no definida")
+                 };
 
-            if (miNombre is string { Length: 5})
-                Console.WriteLine("El nombre {0} tiene 5 caracteres",
-                    (string)miNombre);
-
-            bool ProcesarPeticion(Peticion pet) => pet switch
-            {
-                { TipoDeContenido: "image/*", Metodo: "GET" } => true,
-                { Puerto: 8080, Metodo: string { Length: 2 } } => true,
-                { TipoDeContenido: "image/*", Metodo: "POST" } when pet.Puerto.ToString().Length <= 4 => true,
-                { Metodo: "PUT", Puerto: 3000, TipoDeContenido: string ct } => ct.EndsWith("*"),
-                _ => false
-            };
+            var total = ConvertirMoneda(500m, Moneda.MXN, Moneda.EUR);
+            Console.WriteLine("total : " + total.ToString());
         }
     }
 }
