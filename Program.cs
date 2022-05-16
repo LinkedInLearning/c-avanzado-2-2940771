@@ -6,18 +6,25 @@ namespace Avanzado2_3
 {
     class Program
     {
-        static void Main()
+        static async Task Main()
         {
-            Task<string> tr = Task.Run(() =>
-            {
-                var msj = $"Tarea {Task.CurrentId} " +
-               $"se ejecuta en el hilo {Thread.CurrentThread.ManagedThreadId}";
+            await TareaFecha();
+        }
 
-                return msj;
+        public static async Task TareaFecha()
+        {
+            var ta = Task.Run(() =>
+            {
+                var msj = $"Tarea antecedente: {Task.CurrentId}";
+                Console.WriteLine(msj);
+                return DateTime.Now;
             });
-            var imprime = tr.Result;
-            if (tr.IsCompleted)
-                Console.WriteLine(imprime);
+
+            await ta.ContinueWith(a =>
+            {
+                var msj = $"Tarea continuacion: {Task.CurrentId}";
+                Console.WriteLine(msj);
+            });
         }
     }
 }
