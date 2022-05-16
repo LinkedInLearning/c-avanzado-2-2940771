@@ -10,9 +10,10 @@ namespace Avanzado2_5
             var total = Divide(5, 2);
             Console.WriteLine(total);
 
-            GuardarResultado(total.ToString());
-
-
+            Console.WriteLine("Nombre del archivo");
+            var archivo = Console.ReadLine();
+            GuardarResultado(total.ToString(), archivo);
+            Console.WriteLine("hola mundo");
         }
         static double Divide (int divisor, int dividendo)
         {
@@ -50,8 +51,32 @@ namespace Avanzado2_5
                 if (!File.Exists(ruta))
                 {
                     using StreamWriter sw = File.CreateText(ruta);
-                    File.AppendText($"Ha ocurrido un error, en {DateTime.Now}")
+                    File.AppendText($"Ha ocurrido un error, en {DateTime.Now}");
                 }
+            }
+        }
+        static void GuardarResultado(
+            string resultado, string archivo)
+        {
+            if (!archivo.Contains(".txt"))
+                throw new Exception("Formato de archivo incorrecto");
+            string ruta = @$"C:\temporal\{archivo}";
+            try
+            {
+                using (StreamWriter sw = File.AppendText(ruta))
+                {
+                    sw.WriteLine(resultado + "\n");
+                }
+            }
+            catch (IOException e)
+            {
+                Console.WriteLine("Error leyendo archivo {0}." +
+                    " mensaje = {1}",
+                    ruta, e.Message);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
             }
         }
 
