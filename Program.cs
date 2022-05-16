@@ -8,30 +8,16 @@ namespace Avanzado2_3
     {
         static void Main()
         {
-            //RUN
-            var tr = Task.Run(() =>
+            Task<string> tr = Task.Run(() =>
             {
-                Console.WriteLine("Tarea {0} se ejecuta en el hilo {1}",
-                    Task.CurrentId, Thread.CurrentThread.ManagedThreadId);
-                Thread.Sleep(2000);
+                var msj = $"Tarea {Task.CurrentId} " +
+               $"se ejecuta en el hilo {Thread.CurrentThread.ManagedThreadId}";
+
+                return msj;
             });
-            if (!tr.IsCompleted)
-                tr.Wait();
-
-            bool iniciarTarea = true;
-            //Start
-            var ts = new Task(() =>
-            {
-                Console.WriteLine("Tarea {0} se ejecuta en el hilo {1}",
-                    Task.CurrentId, Thread.CurrentThread.ManagedThreadId);
-            });
-            if (iniciarTarea)
-                ts.Start();
-
-            //verificar estado
-            if (ts.Status == TaskStatus.Running || ts.Status == TaskStatus.WaitingToRun)
-                ts.Wait();
-
+            var imprime = tr.Result;
+            if (tr.IsCompleted)
+                Console.WriteLine(imprime);
         }
     }
 }
