@@ -58,11 +58,12 @@ namespace Avanzado2_5
         static void GuardarResultado(
             string resultado, string archivo)
         {
-            if (!archivo.Contains(".txt"))
-                throw new FormatoArchivoException($"archivo utilizado:{archivo}");
-            string ruta = @$"C:\temporal\{archivo}";
+            var ruta = "";
             try
             {
+                if (!archivo.Contains(".txt"))
+                    throw new FormatoArchivoException($"archivo utilizado:{archivo}");
+                ruta = @$"C:\temporal\{archivo}";
                 using (StreamWriter sw = File.AppendText(ruta))
                 {
                     sw.WriteLine(resultado + "\n");
@@ -73,6 +74,15 @@ namespace Avanzado2_5
                 Console.WriteLine("Error leyendo archivo {0}." +
                     " mensaje = {1}",
                     ruta, e.Message);
+            }
+            catch(FormatoArchivoException formatoEx) when (archivo.Contains(".pdf"))
+            {
+                Console.WriteLine("formato PDF");
+            }
+            catch (FormatoArchivoException formatoEx) when (archivo.Contains(".xls"))
+            {
+                Console.WriteLine("formato XLS");
+
             }
         }
 
