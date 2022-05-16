@@ -6,17 +6,25 @@ namespace Avanzado2_5
     {
         static void Main()
         {
+            var total = Divide(5, 0);
+            Console.WriteLine(total);
+        }
+        static double Divide (int divisor, int dividendo)
+        {
+            var res = 0;
             try
             {
-                //codigo sujeto a errores
-            }catch (Exception e)
+                res = divisor / dividendo;
+            }catch(DivideByZeroException ex)
             {
-                //que queremos hacer en caso de error
-            }
-            finally
+                //guardar el error
+                Console.WriteLine(ex);
+            }catch(Exception ex)
             {
-                //se ejecuta independientemente del error
+                Console.WriteLine(ex);
             }
+            return res;
         }
+
     }
 }
