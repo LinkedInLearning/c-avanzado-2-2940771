@@ -59,7 +59,7 @@ namespace Avanzado2_5
             string resultado, string archivo)
         {
             if (!archivo.Contains(".txt"))
-                throw new Exception("Formato de archivo incorrecto");
+                throw new FormatoArchivoException($"archivo utilizado:{archivo}");
             string ruta = @$"C:\temporal\{archivo}";
             try
             {
@@ -73,10 +73,6 @@ namespace Avanzado2_5
                 Console.WriteLine("Error leyendo archivo {0}." +
                     " mensaje = {1}",
                     ruta, e.Message);
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e);
             }
         }
 
