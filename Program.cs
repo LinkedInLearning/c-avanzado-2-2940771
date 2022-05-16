@@ -1,45 +1,22 @@
 ﻿using System;
-using System.Threading;
-using System.Threading.Tasks;
 
-namespace Avanzado2_3
+namespace Avanzado2_5
 {
     class Program
     {
-        static async Task Main()
+        static void Main()
         {
-            await TareaFecha();
-        }
-
-        public static async Task TareaFecha()
-        {
-            var ta = Task.Run(() =>
-            {
-                var msj = $"Tarea antecedente: {Task.CurrentId}";
-                Console.WriteLine(msj);
-                throw null;
-                return DateTime.Now;
-            });
-            /*
             try
             {
-                ta.Wait();
-            }catch(AggregateException ae)
+                //codigo sujeto a errores
+            }catch (Exception e)
             {
-                if (ae.InnerException is NullReferenceException)
-                    Console.WriteLine("excepción NULL");
-            }*/
-            ta.Wait();
-            _ = ta.IsCanceled;
-            if (ta.IsFaulted)
-                Console.WriteLine(ta.Exception);
-
-
-            await ta.ContinueWith(a =>
+                //que queremos hacer en caso de error
+            }
+            finally
             {
-                var msj = $"Tarea continuacion: {Task.CurrentId}";
-                Console.WriteLine(msj);
-            });
+                //se ejecuta independientemente del error
+            }
         }
     }
 }
