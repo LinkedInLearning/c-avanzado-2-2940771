@@ -18,10 +18,12 @@ Las ramas están estructuradas para corresponder a los vídeos del curso. La con
 ## Instalación
 
 1. Para utilizar estos archivos de ejercicios, debes tener descargado lo siguiente:
-   - [software]
+   - Visual Studio 2019
 
 2. Clona este repositorio en tu máquina local usando la Terminal (macOS) o CMD (Windows), o una herramienta GUI como SourceTree.
-3. [Instrucciones específicas del curso].
+
+
+3. Una vez que tienes la carpeta en tu máquina local y Visual Studio instalado, puedes abrir el archivo solución .sln o abrir el proyecto directamente desde Visual Studio
 
 ### Docente
 
