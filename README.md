@@ -1,7 +1,7 @@
 # C# avanzado 2
 Este es el repositorio del curso de LinkedIn Learning `[C# avanzado 2]`. El curso completo está disponible en [LinkedIn Learning][lil-course-url].
 
-![Nombre completo del curso][lil-thumbnail-url] 
+![image](https://user-images.githubusercontent.com/71371373/177936305-b1a9ee82-7e62-4dea-aa76-8c0dd64dffe3.png)
 
 Consulta el archivo Readme en la rama main para obtener instrucciones e información actualizadas.
 
