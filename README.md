@@ -1,7 +1,7 @@
 # C# avanzado 2
-Este es el repositorio del curso de LinkedIn Learning `[C# avanzado 2]`. El curso completo está disponible en [LinkedIn Learning][lil-course-url].
+Este es el repositorio del curso de LinkedIn Learning `C# avanzado 2`. El curso completo está disponible en [LinkedIn Learning][lil-course-url].
 
-![image](https://user-images.githubusercontent.com/71371373/177936305-b1a9ee82-7e62-4dea-aa76-8c0dd64dffe3.png)
+![COURSENAME][lil-thumbnail-url] 
 
 Consulta el archivo Readme en la rama main para obtener instrucciones e información actualizadas.
 
@@ -33,6 +33,4 @@ Echa un vistazo a mis otros cursos en [LinkedIn Learning](https://www.linkedin.c
 
 [0]: # (Replace these placeholder URLs with actual course URLs)
 [lil-course-url]: https://www.linkedin.com/learning/c-sharp-avanzado-2/avanza-en-tu-conocimiento-de-c-sharp
-[lil-thumbnail-url]: https://cdn.lynda.com/course/2875095/2875095-1615224395432-16x9.jpg
-
-[1]: # (End of ES-Instruction ###############################################################################################)
+[lil-thumbnail-url]: https://cdn.lynda.com/course/2940771/2940771-1657263642447-16x9.jpg
